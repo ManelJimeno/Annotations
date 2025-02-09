@@ -3,6 +3,7 @@
 Tutorial for the configuration of programming environments in different versions of operating systems
 
 * [Config Proxmox](proxmox.md)
+* [Config Home Assistant](ha.md)
 * [Config Windows](windows.md)
 * [Config Ubuntu/Debian](ubuntu.md)
 * [Config MacOS](macos.md)
