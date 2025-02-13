@@ -6,6 +6,7 @@
 * [Zigbee dongle bug](https://github.com/Koenkk/zigbee2mqtt/discussions/24364)
 * [Create a node cluster](#create-a-node-cluster)
 * [Remove node from a cluster](#remove-node-from-a-cluster)
+* [Create LXC containers](lxc_containers.md)
 
 ## Create a node cluster
 
