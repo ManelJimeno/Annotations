@@ -10,3 +10,4 @@ Tutorial for the configuration of programming environments in different versions
 * [Visual Studio Code plugins](visual_studio_code.md)
 * [DJango](django.md)
 * [Cuda](cuda.md)
+* [Oracle](oracle.md)
