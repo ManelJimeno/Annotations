@@ -22,8 +22,8 @@ sudo timedatectl set-local-rtc 1
 Dev tools to work with C/C++ and python
 
 ``` bash
-apt-get install -y git python3 python3-setuptools python3-pip python3-wheel
-apt-get install -y git autotools-dev automake build-essential cmake yasm tmate tig
+sudo apt install -y git python3 python3-setuptools python3-pip python3-wheel \
+                    autotools-dev automake build-essential cmake yasm tmate tig
 ```
 
 ## GStreamer 1.0 tools and dev libraries
@@ -31,13 +31,15 @@ apt-get install -y git autotools-dev automake build-essential cmake yasm tmate t
 From [gstreamer](https://gstreamer.freedesktop.org/documentation/installing/on-linux.html?gi-language=c)
 
 ``` bash
-apt-get install -y libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgstreamer-plugins-bad1.0-dev gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-doc gstreamer1.0-tools gstreamer1.0-x gstreamer1.0-alsa gstreamer1.0-gl gstreamer1.0-gtk3 gstreamer1.0-qt5 gstreamer1.0-pulseaudio
+sudo apt install -y libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgstreamer-plugins-bad1.0-dev gstreamer1.0-plugins-base  \
+            gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav gstreamer1.0-tools \
+            gstreamer1.0-x gstreamer1.0-alsa gstreamer1.0-gl gstreamer1.0-gtk3 gstreamer1.0-qt5 gstreamer1.0-pulseaudio
 ```
 
 ## Webcam tools
 
 ``` bash
-apt install uvcdynctrl v4l-utils guvcview
+sudo apt install uvcdynctrl v4l-utils guvcview
 
 v4l2-ctl --info -L -d /dev/video0 --list-formats-ex
 uvcdynctrl -d /dev/video0 -f
@@ -84,9 +86,12 @@ rm google-chrome-stable_current_amd64.deb
 Install Visual Studio Code
 
 ``` bash
-sudo apt install software-properties-common apt-transport-https wget
-wget -q https://packages.microsoft.com/keys/microsoft.asc -O- | sudo apt-key add -
-sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+sudo apt install wget gpg apt-transport-https
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+sudo install -D -o root -g root -m 644 packages.microsoft.gpg /etc/apt/keyrings/packages.microsoft.gpg
+echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" |  \
+    sudo tee /etc/apt/sources.list.d/vscode.list > /dev/null
+rm -f packages.microsoft.gpg
 sudo apt update
 sudo apt install code
 ```
